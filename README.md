@@ -1,5 +1,7 @@
 # airflow-llm-alerting
 
+[![tests](https://github.com/Superaordaaa/airflow-llm-alerting/actions/workflows/tests.yml/badge.svg)](https://github.com/Superaordaaa/airflow-llm-alerting/actions/workflows/tests.yml)
+
 When an Airflow task fails or runs slow, a **local LLM (Ollama, Qwen 2.5)** turns the raw error into a short plain-language explanation and sends it to **Telegram**. You see what broke and where to look first, without opening the logs.
 
 This is a clean demo of a pattern I run in production as a Data Engineer, rewritten from scratch with no company code or configuration.
