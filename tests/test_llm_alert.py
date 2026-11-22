@@ -83,6 +83,10 @@ class TestAlerts(Base):
             llm_alert.on_failure({"task_instance": ti(), "exception": ValueError("2")})
         self.assertEqual(post.call_count, 2 * first)
 
+    def test_empty_state_file_var_uses_default(self):
+        with mock.patch.dict(os.environ, {"ALERT_STATE_FILE": ""}):
+            self.assertTrue(str(llm_alert._state_file()).endswith("airflow_llm_alert_state.json"))
+
     def test_cooldown_expires(self):
         llm_alert.mark_alerted("d:task failed", now=1000)
         self.assertTrue(llm_alert.in_cooldown("d:task failed", now=1000 + 59 * 60))

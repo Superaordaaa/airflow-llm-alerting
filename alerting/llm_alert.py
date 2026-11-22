@@ -50,7 +50,7 @@ DISCLAIMER = "Written by {model} on our own server. It can be wrong; the error i
 
 
 def _cfg(name: str, default: str | None = None) -> str | None:
-    return os.environ.get(name, default)
+    return os.environ.get(name) or default  # empty values fall back to the default
 
 
 # ---------- cooldown ----------
